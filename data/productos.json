@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nombre": "Pizza muzzarella",
+    "precio": 18000,
+    "categoria": "Pizzas",
+    "stock": 50,
+    "imagen": "assets/img/productos/imagen-pizza-muzzarella.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Hamburguesa simple",
+    "precio": 10000,
+    "categoria": "Hamburguesas",
+    "stock": 80,
+    "imagen": "assets/img/productos/imagen-hamburguesa-simple.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Ensalada César",
+    "precio": 8000,
+    "categoria": "Ensaladas",
+    "stock": 50,
+    "imagen": "assets/img/productos/imagen-ensalada-cesar.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Gaseosa",
+    "precio": 4000,
+    "categoria": "Gaseosas",
+    "stock": 100,
+    "imagen": "assets/img/productos/imagen-gaseosa.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Papas fritas",
+    "precio": 4000,
+    "categoria": "Guarniciones",
+    "stock": 60,
+    "imagen": "assets/img/productos/imagen-papas-fritas.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Flan",
+    "precio": 5000,
+    "categoria": "Postres",
+    "stock": 40,
+    "imagen": "assets/img/productos/imagen-flan.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Milanesa",
+    "precio": 10000,
+    "categoria": "Platos principales",
+    "stock": 45,
+    "imagen": "assets/img/productos/imagen-milanesa.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Pancho",
+    "precio": 7000,
+    "categoria": "Comida rápida",
+    "stock": 30,
+    "imagen": "assets/img/productos/imagen-pancho.jpg"
+  }
+]

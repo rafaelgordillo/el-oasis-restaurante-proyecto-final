@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administración del catálogo de El Oasis.">
+  <title>El Oasis | Administración</title>
+  <link rel="icon" href="../assets/img/logo-solo-oasis.jpg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" defer src="../js/main.js"></script>
+</head>
+<body data-page="admin">
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="El Oasis Restaurante, inicio">
+      <img src="../assets/img/logo-horizontal.png" alt="El Oasis Restaurante" width="250" height="82">
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="../index.html">Menú del cliente</a>
+      <a class="nav-link active" href="administracion.html" aria-current="page">Administración</a>
+    </nav>
+  </header>
+
+  <main class="page-shell admin-shell">
+    <section class="admin-intro"><p class="eyebrow">PANEL DE GESTIÓN</p><h1>Administración del menú</h1><p>Agregá productos, actualizá precios y stock o quitá artículos de la carta.</p><p class="notice"><strong>Importante:</strong> los cambios se guardan en este navegador mediante localStorage.</p></section>
+
+    <section class="admin-card section-block">
+      <div class="section-heading"><div><p class="eyebrow">NUEVO ARTÍCULO</p><h2>Agregar producto</h2></div></div>
+      <form id="formulario-producto" class="product-form">
+        <label>Nombre del producto<input type="text" id="nombre" name="nombre" maxlength="70" required placeholder="Ej. Pizza napolitana"></label>
+        <label>Precio (ARS)<input type="number" id="precio" name="precio" min="1" step="1" required placeholder="Ej. 8500"></label>
+        <label>Categoría<input type="text" id="categoria" name="categoria" maxlength="40" required placeholder="Ej. Pizzas"></label>
+        <label>Stock inicial<input type="number" id="stock" name="stock" min="0" step="1" required placeholder="Ej. 20"></label>
+        <button class="button button-primary form-submit" type="submit">＋ Agregar producto</button>
+      </form>
+      <p id="estado-admin" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="section-block admin-card">
+      <div class="section-heading"><div><p class="eyebrow">CATÁLOGO ACTUAL</p><h2>Productos registrados</h2></div><span id="cantidad-productos" class="count-pill">0 productos</span></div>
+      <label class="search-field admin-search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Buscar producto en administración</span><input id="buscador-admin" type="search" placeholder="Buscar producto…" autocomplete="off"></label>
+      <div id="lista-admin" class="admin-product-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><img src="../assets/img/logo-oasis-radius.png" alt="" width="30" height="30"><span>El Oasis · Panel de administración</span><a href="../index.html">Volver al menú</a></footer>
+</body>
+</html>
