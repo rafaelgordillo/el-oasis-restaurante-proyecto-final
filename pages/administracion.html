@@ -1,49 +1,177 @@
+
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Administración del catálogo de El Oasis.">
+
   <title>El Oasis | Administración</title>
+
+  <!-- Define el ícono de la pestaña del navegador. -->
   <link rel="icon" href="../assets/img/logo-solo-oasis.jpg" type="image/svg+xml">
+
+  <!-- Importa los estilos CSS compartidos por las páginas del proyecto.
+       ../ indica que se sube un nivel en la estructura de carpetas. -->
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Importa los estilos de Toastify, la biblioteca utilizada para mostrar notificaciones. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <!-- Carga la biblioteca Toastify.
+       defer hace que el script se ejecute después de analizar el HTML. -->
   <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Carga el JavaScript principal como módulo.
+       type="module" permite utilizar import y export.
+       defer permite que el HTML se analice antes de ejecutar el módulo. -->
   <script type="module" defer src="../js/main.js"></script>
 </head>
+
+<!-- data-page="admin" identifica esta página como el panel de administración.
+     main.js consulta este atributo para decidir qué funciones ejecutar. -->
 <body data-page="admin">
+
+  <!-- Encabezado compartido del sitio: logo y navegación principal. -->
   <header class="site-header">
+
+    <!-- El logo funciona como enlace para volver a la página principal.
+         aria-label proporciona una descripción accesible del enlace. -->
     <a class="brand" href="../index.html" aria-label="El Oasis Restaurante, inicio">
+
+      <!-- Logo horizontal del restaurante.
+           alt describe la imagen y width/height reservan sus dimensiones. -->
       <img src="../assets/img/logo-horizontal.png" alt="El Oasis Restaurante" width="250" height="82">
     </a>
+
+    <!-- Navegación principal del sitio.
+         aria-label identifica esta sección para tecnologías de asistencia. -->
     <nav class="main-nav" aria-label="Navegación principal">
+
+      <!-- Enlace para acceder al menú que utiliza el cliente. -->
       <a class="nav-link" href="../index.html">Menú del cliente</a>
+
+      <!-- Enlace a la página actual.
+           active permite aplicarle estilos visuales y aria-current indica
+           que es la página seleccionada actualmente. -->
       <a class="nav-link active" href="administracion.html" aria-current="page">Administración</a>
     </nav>
   </header>
 
+  <!-- Contenido principal de la página.
+       Las clases permiten organizar y dar estilo al panel mediante CSS. -->
   <main class="page-shell admin-shell">
-    <section class="admin-intro"><p class="eyebrow">PANEL DE GESTIÓN</p><h1>Administración del menú</h1><p>Agregá productos, actualizá precios y stock o quitá artículos de la carta.</p><p class="notice"><strong>Importante:</strong> los cambios se guardan en este navegador mediante localStorage.</p></section>
 
+    <!-- Presentación del panel y explicación de sus funciones. -->
+    <section class="admin-intro">
+      <p class="eyebrow">PANEL DE GESTIÓN</p>
+      <h1>Administración del menú</h1>
+      <p>Agregá productos, actualizá precios y stock o quitá artículos de la carta.</p>
+
+      <!-- Aviso para informar dónde se conservan los cambios. -->
+      <p class="notice">
+        <strong>Importante:</strong> los cambios se guardan en este navegador mediante localStorage.
+      </p>
+    </section>
+
+    <!-- Sección que contiene el formulario para agregar productos al catálogo. -->
     <section class="admin-card section-block">
-      <div class="section-heading"><div><p class="eyebrow">NUEVO ARTÍCULO</p><h2>Agregar producto</h2></div></div>
+
+      <!-- Encabezado de la sección del formulario. -->
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">NUEVO ARTÍCULO</p>
+          <h2>Agregar producto</h2>
+        </div>
+      </div>
+
+      <!-- Formulario que main.js identifica mediante formulario-producto.
+           Al enviarlo, JavaScript valida los datos y agrega el nuevo producto. -->
       <form id="formulario-producto" class="product-form">
-        <label>Nombre del producto<input type="text" id="nombre" name="nombre" maxlength="70" required placeholder="Ej. Pizza napolitana"></label>
-        <label>Precio (ARS)<input type="number" id="precio" name="precio" min="1" step="1" required placeholder="Ej. 8500"></label>
-        <label>Categoría<input type="text" id="categoria" name="categoria" maxlength="40" required placeholder="Ej. Pizzas"></label>
-        <label>Stock inicial<input type="number" id="stock" name="stock" min="0" step="1" required placeholder="Ej. 20"></label>
+
+        <!-- Campo para ingresar el nombre del producto.
+             required impide enviar el formulario vacío y maxlength limita su longitud. -->
+        <label>Nombre del producto
+          <input type="text" id="nombre" name="nombre" maxlength="70" required placeholder="Ej. Pizza napolitana">
+        </label>
+
+        <!-- Campo numérico para ingresar el precio en pesos argentinos.
+             min establece el mínimo permitido y step="1" indica incrementos enteros. -->
+        <label>Precio (ARS)
+          <input type="number" id="precio" name="precio" min="1" step="1" required placeholder="Ej. 8500">
+        </label>
+
+        <!-- Campo para indicar la categoría a la que pertenece el producto. -->
+        <label>Categoría
+          <input type="text" id="categoria" name="categoria" maxlength="40" required placeholder="Ej. Pizzas">
+        </label>
+
+        <!-- Campo para definir la cantidad inicial disponible.
+             Se permiten valores enteros desde cero. -->
+        <label>Stock inicial
+          <input type="number" id="stock" name="stock" min="0" step="1" required placeholder="Ej. 20">
+        </label>
+
+        <!-- Envía el formulario.
+             main.js escucha el evento submit para validar y registrar el producto. -->
         <button class="button button-primary form-submit" type="submit">＋ Agregar producto</button>
       </form>
+
+      <!-- Área donde JavaScript puede mostrar mensajes de estado.
+           role="status" y aria-live="polite" ayudan a que los lectores de pantalla
+           anuncien los cambios sin interrumpir al usuario. -->
       <p id="estado-admin" class="status-message" role="status" aria-live="polite"></p>
     </section>
 
+    <!-- Sección que muestra y permite administrar los productos existentes. -->
     <section class="section-block admin-card">
-      <div class="section-heading"><div><p class="eyebrow">CATÁLOGO ACTUAL</p><h2>Productos registrados</h2></div><span id="cantidad-productos" class="count-pill">0 productos</span></div>
-      <label class="search-field admin-search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Buscar producto en administración</span><input id="buscador-admin" type="search" placeholder="Buscar producto…" autocomplete="off"></label>
+
+      <!-- Encabezado del catálogo y contador de productos registrados. -->
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CATÁLOGO ACTUAL</p>
+          <h2>Productos registrados</h2>
+        </div>
+
+        <!-- main.js actualiza este elemento con la cantidad total de productos. -->
+        <span id="cantidad-productos" class="count-pill">0 productos</span>
+      </div>
+
+      <!-- Buscador de productos.
+           main.js escucha el evento input para actualizar los resultados
+           mientras el usuario escribe. autocomplete="off" desactiva las
+           sugerencias automáticas del navegador para este campo. -->
+      <label class="search-field admin-search">
+
+        <!-- Símbolo decorativo del buscador; aria-hidden evita anunciarlo como contenido. -->
+        <span aria-hidden="true">⌕</span>
+
+        <!-- Etiqueta accesible que no se muestra visualmente, pero describe el campo. -->
+        <span class="visually-hidden">Buscar producto en administración</span>
+
+        <!-- Campo de búsqueda identificado por main.js mediante buscador-admin. -->
+        <input id="buscador-admin" type="search" placeholder="Buscar producto…" autocomplete="off">
+      </label>
+
+      <!-- Contenedor vacío inicialmente.
+           JavaScript genera dentro de él las filas de productos, sus controles
+           para modificar el stock y los botones para eliminarlos.
+           aria-live="polite" permite anunciar cambios dinámicos a tecnologías de asistencia. -->
       <div id="lista-admin" class="admin-product-list" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer class="site-footer"><img src="../assets/img/logo-oasis-radius.png" alt="" width="30" height="30"><span>El Oasis · Panel de administración</span><a href="../index.html">Volver al menú</a></footer>
+  <!-- Pie de página con el logo, el nombre del panel y un enlace de regreso. -->
+  <footer class="site-footer">
+
+    <!-- Logo decorativo: alt vacío indica que no necesita una descripción adicional. -->
+    <img src="../assets/img/logo-oasis-radius.png" alt="" width="30" height="30">
+
+    <span>El Oasis · Panel de administración</span>
+
+    <!-- Permite volver al menú del cliente. -->
+    <a href="../index.html">Volver al menú</a>
+  </footer>
 </body>
 </html>

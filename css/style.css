@@ -1,7 +1,10 @@
+
+/* Importa las fuentes DM Sans para textos generales y Playfair Display para títulos. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
+/* Variables globales: permiten reutilizar colores y sombras en todo el proyecto. */
 :root {
-  color-scheme: light;
+  color-scheme: light; /* Indica que la interfaz está diseñada para un esquema claro. */
   --green-950: #102e27;
   --green-900: #173f35;
   --green-800: #245548;
@@ -17,41 +20,51 @@
   --shadow: 0 14px 38px rgba(23, 63, 53, .08);
 }
 
+
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
+/* Desplazamiento suave al navegar hacia secciones mediante enlaces internos. */
 html {
   scroll-behavior: smooth;
 }
 
+/* Estilos generales de toda la página. */
 body {
-  margin: 0;
+  margin: 0; /* Elimina el margen predeterminado del navegador. */
   background: var(--cream);
   color: var(--ink);
   font-family: 'DM Sans', Arial, sans-serif;
-  line-height: 1.55;
+  line-height: 1.55; /* Mejora la separación vertical entre líneas de texto. */
 }
 
+/* Hace que botones e inputs hereden la tipografía general de la página. */
 button,
 input {
   font: inherit;
 }
 
+/* Muestra el cursor de interacción al pasar sobre un botón. */
 button {
   cursor: pointer;
 }
 
+/* Apariencia de los botones deshabilitados. */
 button:disabled {
   cursor: not-allowed;
   opacity: .45;
   transform: none !important;
 }
 
+/* Los enlaces heredan el color del texto de su elemento contenedor. */
 a {
   color: inherit;
 }
 
+/* Encabezado: contiene el logo y la navegación principal. */
 .site-header {
   min-height: 88px;
   padding: 14px max(5vw, calc((100vw - 1180px) / 2));
@@ -63,6 +76,7 @@ a {
   border-bottom: 1px solid rgba(23, 63, 53, .08);
 }
 
+/* Contenedor del logo y el nombre de la marca. */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -71,6 +85,7 @@ a {
   color: var(--green-900);
 }
 
+/* Ajusta el tamaño del logo del encabezado. */
 .brand img {
   display: block;
   width: 250px;
@@ -78,16 +93,19 @@ a {
   max-width: 100%;
 }
 
+/* Organiza verticalmente el nombre y el texto secundario de la marca. */
 .brand span {
   display: grid;
   line-height: 1.15;
 }
 
+/* Estilo del nombre de la marca, si se utiliza en texto. */
 .brand strong {
   font: 700 1.3rem 'Playfair Display', Georgia, serif;
   letter-spacing: .01em;
 }
 
+/* Estilo del texto secundario de la marca. */
 .brand small {
   margin-top: 5px;
   color: var(--muted);
@@ -96,12 +114,14 @@ a {
   text-transform: uppercase;
 }
 
+/* Distribuye horizontalmente los enlaces de navegación. */
 .main-nav {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+/* Estilos compartidos por los enlaces de navegación y el acceso al carrito. */
 .nav-link,
 .nav-cart {
   padding: 10px 14px;
@@ -113,17 +133,20 @@ a {
   transition: background .18s ease, color .18s ease;
 }
 
+/* Resalta el enlace activo y el enlace bajo el cursor. */
 .nav-link:hover,
 .nav-link.active {
   background: var(--green-100);
   color: var(--green-900);
 }
 
+/* Diferencia visualmente el acceso al carrito del resto de la navegación. */
 .nav-cart {
   background: var(--green-900);
   color: white;
 }
 
+/* Círculo que muestra la cantidad de productos del carrito. */
 .nav-cart span {
   display: inline-grid;
   min-width: 23px;
@@ -136,11 +159,13 @@ a {
   font-size: .76rem;
 }
 
+/* Limita el ancho del contenido principal y lo centra horizontalmente. */
 .page-shell {
   width: min(1120px, 90%);
   margin: 0 auto;
 }
 
+/* Sección principal de bienvenida o hero. */
 .hero {
   min-height: 370px;
   margin: 36px 0 64px;
@@ -156,6 +181,7 @@ a {
   position: relative;
 }
 
+/* Crea un elemento decorativo circular detrás del contenido del hero. */
 .hero::after {
   content: '';
   position: absolute;
@@ -169,12 +195,14 @@ a {
   box-shadow: 0 0 0 28px rgba(232, 201, 139, .035), 0 0 0 58px rgba(232, 201, 139, .025);
 }
 
+/* Mantiene el texto del hero por encima del elemento decorativo. */
 .hero-copy {
   max-width: 600px;
   position: relative;
   z-index: 1;
 }
 
+/* Estilo general de los pequeños textos introductorios de cada sección. */
 .eyebrow {
   margin: 0 0 10px;
   color: #9b8050;
@@ -183,10 +211,12 @@ a {
   letter-spacing: .17em;
 }
 
+/* Cambia el color del texto introductorio dentro del hero. */
 .hero .eyebrow {
   color: var(--gold);
 }
 
+/* Elimina el margen superior predeterminado de títulos y párrafos. */
 h1,
 h2,
 h3,
@@ -194,6 +224,7 @@ p {
   margin-top: 0;
 }
 
+/* Estilos de los títulos principales de la portada y administración. */
 .hero h1,
 .admin-intro h1 {
   margin: 0 0 18px;
@@ -201,16 +232,19 @@ p {
   letter-spacing: -.025em;
 }
 
+/* Destaca en dorado una parte del título del hero. */
 .hero h1 span {
   color: var(--gold);
 }
 
+/* Limita el ancho y define el color del párrafo descriptivo del hero. */
 .hero-copy>p:not(.eyebrow) {
   max-width: 460px;
   margin-bottom: 26px;
   color: #e2e9e1;
 }
 
+/* Contenedor del logo o imagen decorativa de la portada. */
 .hero-mark {
   z-index: 1;
   display: flex;
@@ -220,6 +254,7 @@ p {
   justify-content: center;
 }
 
+/* Ajusta la imagen del hero y aplica bordes redondeados y sombra. */
 .hero-mark img {
   display: block;
   width: 100%;
@@ -229,6 +264,7 @@ p {
   box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
 }
 
+/* Estilos compartidos por los botones del proyecto. */
 .button {
   min-height: 43px;
   padding: 11px 18px;
@@ -245,46 +281,55 @@ p {
   transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
 }
 
+/* Eleva ligeramente el botón al pasar el cursor. */
 .button:hover {
   transform: translateY(-1px);
 }
 
+/* Variante principal del botón. */
 .button-primary {
   background: var(--green-900);
   color: white;
   box-shadow: 0 5px 14px rgba(23, 63, 53, .12);
 }
 
+/* Cambia el fondo del botón principal al pasar el cursor. */
 .button-primary:hover {
   background: var(--green-800);
 }
 
+/* Variante dorada del botón principal dentro del hero. */
 .hero .button-primary {
   background: var(--gold);
   color: var(--green-950);
   box-shadow: none;
 }
 
+/* Hace que el botón ocupe todo el ancho disponible. */
 .button-wide {
   width: 100%;
 }
 
+/* Variante secundaria y discreta de botón. */
 .button-quiet {
   background: transparent;
   color: var(--green-900);
   border: 1px solid #cdd7ce;
 }
 
+/* Variante de botón utilizada para acciones peligrosas, como eliminar. */
 .button-danger {
   background: #f8eae6;
   color: var(--danger);
   padding: 9px 13px;
 }
 
+/* Separa verticalmente las secciones principales. */
 .section-block {
   margin-bottom: 64px;
 }
 
+/* Organiza el título y otros elementos de la cabecera de cada sección. */
 .section-heading {
   display: flex;
   align-items: end;
@@ -293,17 +338,20 @@ p {
   margin-bottom: 24px;
 }
 
+/* Estilo de los títulos de sección. */
 .section-heading h2 {
   margin: 0;
   color: var(--green-950);
   font: 600 clamp(1.8rem, 3vw, 2.4rem)/1.15 'Playfair Display', Georgia, serif;
 }
 
+/* Texto secundario, como las indicaciones del pedido. */
 .subtle-text {
   color: var(--muted);
   font-size: .87rem;
 }
 
+/* Campo de búsqueda del menú. */
 .search-field {
   width: min(100%, 310px);
   min-height: 46px;
@@ -317,11 +365,13 @@ p {
   color: #7c877e;
 }
 
+/* Ajusta el tamaño del símbolo de búsqueda. */
 .search-field>span:not(.visually-hidden) {
   font-size: 1.5rem;
   line-height: 1;
 }
 
+/* Permite que el campo de búsqueda ocupe el espacio disponible. */
 .search-field input {
   width: 100%;
   min-width: 0;
@@ -331,17 +381,20 @@ p {
   color: var(--ink);
 }
 
+/* Resalta el campo de búsqueda cuando está enfocado. */
 .search-field:focus-within {
   border-color: var(--green-800);
   box-shadow: 0 0 0 3px rgba(36, 85, 72, .1);
 }
 
+/* Cuadrícula de productos: cuatro columnas en pantallas grandes. */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* Tarjeta individual de cada producto del menú. */
 .product-card {
   min-width: 0;
   padding: 20px;
@@ -354,11 +407,13 @@ p {
   transition: transform .18s ease, box-shadow .18s ease;
 }
 
+/* Eleva la tarjeta y refuerza su sombra al pasar el cursor. */
 .product-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
 }
 
+/* Imagen del producto: ocupa el ancho de la tarjeta, incluidos sus laterales. */
 .product-image {
   display: block;
   width: calc(100% + 40px);
@@ -369,6 +424,7 @@ p {
   background: var(--cream-dark);
 }
 
+/* Distribuye la categoría y el símbolo del producto en una misma fila. */
 .product-card-top {
   display: flex;
   align-items: center;
@@ -377,6 +433,7 @@ p {
   margin-bottom: 16px;
 }
 
+/* Etiqueta visual de la categoría del producto. */
 .category-tag {
   padding: 5px 8px;
   border-radius: 5px;
@@ -386,6 +443,7 @@ p {
   font-weight: 700;
 }
 
+/* Círculo decorativo para mostrar un símbolo o emoji del producto. */
 .product-symbol {
   display: grid;
   width: 38px;
@@ -397,35 +455,41 @@ p {
   font-size: 1.4rem;
 }
 
+/* Estilo del nombre de cada producto. */
 .product-card h3 {
   margin: 0 0 8px;
   color: var(--green-950);
   font: 600 1.18rem/1.3 'Playfair Display', Georgia, serif;
 }
 
+/* Destaca el precio del producto. */
 .product-price {
   margin: 0 0 5px;
   font-size: 1.12rem;
   font-weight: 700;
 }
 
+/* Estilo del texto que informa las unidades disponibles. */
 .stock-label {
   margin: 0 0 18px;
   color: var(--muted);
   font-size: .78rem;
 }
 
+/* Mantiene el botón al final de la tarjeta y ajusta su tamaño de texto. */
 .product-card .button {
   margin-top: auto;
   font-size: .82rem;
 }
 
+/* Mensajes informativos del catálogo, por ejemplo, durante la carga. */
 .status-message {
   min-height: 1.3em;
   color: var(--muted);
   font-size: .88rem;
 }
 
+/* Panel que contiene el carrito y el proceso de compra. */
 .order-section {
   padding: clamp(22px, 4vw, 42px);
   border: 1px solid #e7e4d9;
@@ -433,15 +497,18 @@ p {
   background: #fdfbf5;
 }
 
+/* Ajusta el espacio inferior del encabezado del pedido. */
 .order-section .section-heading {
   margin-bottom: 20px;
 }
 
+/* Lista de productos agregados al carrito. */
 .cart-list {
   display: grid;
   gap: 10px;
 }
 
+/* Fila individual de un producto dentro del carrito. */
 .cart-item {
   padding: 16px 18px;
   display: flex;
@@ -453,6 +520,7 @@ p {
   background: white;
 }
 
+/* Información textual del producto en el carrito. */
 .cart-item-info h3 {
   margin: 0 0 3px;
   color: var(--green-950);
@@ -469,12 +537,14 @@ p {
   font-size: .93rem;
 }
 
+/* Controles para aumentar, reducir o eliminar cantidades. */
 .quantity-control {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* Estilos de los botones de cantidad, excluyendo el botón de eliminar. */
 .quantity-control>button:not(.remove-item) {
   width: 30px;
   height: 30px;
@@ -488,12 +558,14 @@ p {
   font-size: 1.05rem;
 }
 
+/* Centra los números que muestran la cantidad seleccionada. */
 .quantity-control>span,
 .quantity-control>strong {
   min-width: 20px;
   text-align: center;
 }
 
+/* Estilo del botón para quitar un producto del carrito. */
 .remove-item {
   padding: 5px 7px;
   border: 0;
@@ -503,6 +575,7 @@ p {
   font-weight: 700;
 }
 
+/* Mensaje que se muestra cuando el carrito está vacío. */
 .empty-state {
   margin: 0;
   padding: 26px 16px;
@@ -512,6 +585,7 @@ p {
   text-align: center;
 }
 
+/* Distribuye el panel de propina y el resumen de compra en dos columnas. */
 .checkout-grid {
   margin-top: 22px;
   display: grid;
@@ -520,6 +594,7 @@ p {
   align-items: start;
 }
 
+/* Apariencia compartida por el panel de propina y el resumen. */
 .tip-panel,
 .summary-panel {
   padding: 22px;
@@ -528,32 +603,38 @@ p {
   background: white;
 }
 
+/* Título del panel de propina. */
 .tip-panel h3 {
   margin-bottom: 4px;
   color: var(--green-950);
   font: 600 1.25rem 'Playfair Display', Georgia, serif;
 }
 
+/* Espacio inferior de la descripción de la propina. */
 .tip-panel>p {
   margin-bottom: 18px;
 }
 
+/* Distribuye las opciones de propina y permite que pasen a otra línea. */
 .tip-options {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
+/* Permite seleccionar cada opción de propina haciendo clic en su etiqueta. */
 .tip-options label {
   cursor: pointer;
 }
 
+/* Oculta visualmente los radios originales sin eliminarlos de la interacción. */
 .tip-options input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
+/* Apariencia de cada opción de propina. */
 .tip-options span {
   display: block;
   padding: 9px 13px;
@@ -563,6 +644,7 @@ p {
   font-size: .84rem;
 }
 
+/* Destaca la opción de propina cuyo radio está seleccionado. */
 .tip-options input:checked+span {
   border-color: var(--green-900);
   background: var(--green-100);
@@ -570,11 +652,13 @@ p {
   font-weight: 700;
 }
 
+/* Muestra un contorno cuando una opción de propina recibe el foco del teclado. */
 .tip-options input:focus-visible+span {
   outline: 2px solid var(--green-800);
   outline-offset: 2px;
 }
 
+/* Organiza las filas de subtotal, propina y total. */
 .summary-panel>p {
   margin: 0;
   padding: 8px 0;
@@ -586,10 +670,12 @@ p {
   font-size: .9rem;
 }
 
+/* Destaca los importes del resumen. */
 .summary-panel>p strong {
   color: var(--ink);
 }
 
+/* Diferencia visualmente la fila del total. */
 .summary-panel .summary-total {
   margin: 6px 0 16px;
   padding-top: 15px;
@@ -598,15 +684,18 @@ p {
   font-size: 1rem;
 }
 
+/* Aumenta el tamaño del importe total. */
 .summary-panel .summary-total strong {
   color: var(--green-900);
   font-size: 1.55rem;
 }
 
+/* Agrega separación cuando un botón está inmediatamente después de otro. */
 .summary-panel .button+.button {
   margin-top: 8px;
 }
 
+/* Contenedor visual del ticket generado después de confirmar la compra. */
 .receipt {
   max-width: 600px;
   margin: 28px auto 0;
@@ -616,10 +705,12 @@ p {
   background: white;
 }
 
+/* Oculta el ticket cuando tiene el atributo HTML hidden. */
 .receipt[hidden] {
   display: none;
 }
 
+/* Encabezado del ticket, con el logo y los datos del restaurante. */
 .receipt-heading {
   display: flex;
   align-items: center;
@@ -629,12 +720,14 @@ p {
   border-bottom: 1px dashed #d5d5c9;
 }
 
+/* Título del ticket. */
 .receipt-heading h2 {
   margin: 0;
   color: var(--green-900);
   font: 600 1.5rem 'Playfair Display', Georgia, serif;
 }
 
+/* Texto secundario y fecha que aparecen en el ticket. */
 .receipt-heading p,
 .receipt-date {
   margin: 2px 0 0;
@@ -646,6 +739,7 @@ p {
   margin: 14px 0;
 }
 
+/* Línea individual del ticket con la información y el importe de cada producto. */
 .receipt-line {
   padding: 9px 0;
   display: flex;
@@ -655,14 +749,17 @@ p {
   font-size: .86rem;
 }
 
+/* Permite que nombres extensos de productos se ajusten a varias líneas. */
 .receipt-line span {
   overflow-wrap: anywhere;
 }
 
+/* Sección de subtotal, propina y total del ticket. */
 .receipt-summary {
   margin-top: 14px;
 }
 
+/* Distribuye el concepto y el importe de cada línea del resumen. */
 .receipt-summary p {
   margin: 0;
   padding: 5px 0;
@@ -672,6 +769,7 @@ p {
   font-size: .9rem;
 }
 
+/* Destaca la fila del total del ticket. */
 .receipt-summary .receipt-total {
   margin-top: 7px;
   padding-top: 12px;
@@ -680,6 +778,7 @@ p {
   font-size: 1.1rem;
 }
 
+/* Mensaje de agradecimiento al pie del ticket. */
 .receipt-thanks {
   margin: 18px 0 0;
   color: var(--green-800);
@@ -687,24 +786,29 @@ p {
   text-align: center;
 }
 
+/* Espacio superior de la página de administración. */
 .admin-shell {
   padding-top: 54px;
 }
 
+/* Limita el ancho de la introducción de administración. */
 .admin-intro {
   max-width: 780px;
   margin-bottom: 34px;
 }
 
+/* Título principal de la sección de administración. */
 .admin-intro h1 {
   color: var(--green-950);
   font-size: clamp(2.3rem, 4vw, 3.3rem);
 }
 
+/* Color del texto descriptivo de administración. */
 .admin-intro>p:not(.eyebrow) {
   color: var(--muted);
 }
 
+/* Aviso informativo con un borde lateral dorado. */
 .notice {
   margin-top: 20px;
   padding: 13px 16px;
@@ -715,6 +819,7 @@ p {
   font-size: .86rem;
 }
 
+/* Tarjeta contenedora de los formularios y herramientas administrativas. */
 .admin-card {
   padding: clamp(20px, 3vw, 32px);
   border: 1px solid #e7e4d9;
@@ -723,12 +828,14 @@ p {
   box-shadow: 0 8px 25px rgba(23, 63, 53, .04);
 }
 
+/* Organiza los campos del formulario en dos columnas. */
 .product-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* Coloca la etiqueta y el campo correspondiente uno debajo del otro. */
 .product-form label {
   display: grid;
   gap: 7px;
@@ -737,6 +844,7 @@ p {
   font-weight: 700;
 }
 
+/* Apariencia de los campos de entrada del formulario. */
 .product-form input {
   width: 100%;
   min-height: 46px;
@@ -749,16 +857,19 @@ p {
   font-weight: 400;
 }
 
+/* Resalta el campo del formulario que está seleccionado. */
 .product-form input:focus {
   border-color: var(--green-800);
   box-shadow: 0 0 0 3px rgba(36, 85, 72, .1);
 }
 
+/* Alinea el botón de envío al final de su celda en la cuadrícula. */
 .form-submit {
   align-self: end;
   min-height: 46px;
 }
 
+/* Etiqueta redondeada para mostrar cantidades o el número de productos. */
 .count-pill {
   padding: 6px 10px;
   border-radius: 999px;
@@ -769,15 +880,18 @@ p {
   white-space: nowrap;
 }
 
+/* Espacio inferior del buscador de productos en administración. */
 .admin-search {
   margin-bottom: 16px;
 }
 
+/* Lista vertical de productos en la administración. */
 .admin-product-list {
   display: grid;
   gap: 10px;
 }
 
+/* Fila administrativa: información, controles de stock y acción adicional. */
 .admin-product-row {
   padding: 14px;
   display: grid;
@@ -789,6 +903,7 @@ p {
   background: white;
 }
 
+/* Distribuye el icono y los datos principales de cada producto. */
 .admin-product-main {
   display: flex;
   align-items: center;
@@ -796,6 +911,7 @@ p {
   min-width: 0;
 }
 
+/* Caja decorativa que contiene el icono del producto en administración. */
 .admin-product-icon {
   width: 42px;
   height: 42px;
@@ -808,18 +924,21 @@ p {
   font-size: 1.4rem;
 }
 
+/* Nombre del producto en la lista administrativa. */
 .admin-product-main h3 {
   margin: 0 0 3px;
   color: var(--green-950);
   font-size: .95rem;
 }
 
+/* Información secundaria del producto en administración. */
 .admin-product-main p {
   margin: 0;
   color: var(--muted);
   font-size: .8rem;
 }
 
+/* Organiza y centra los controles de stock. */
 .admin-stock {
   display: grid;
   justify-items: center;
@@ -828,20 +947,24 @@ p {
   font-size: .73rem;
 }
 
+/* Reduce el espacio entre los controles de cantidad del stock. */
 .admin-stock .quantity-control {
   gap: 9px;
 }
 
+/* Reduce el tamaño de los botones para modificar el stock. */
 .admin-stock .quantity-control button {
   width: 27px;
   height: 27px;
 }
 
+/* Destaca la cantidad actual de unidades en stock. */
 .admin-stock .quantity-control strong {
   color: var(--ink);
   font-size: .9rem;
 }
 
+/* Pie de página con la identidad y los datos del restaurante. */
 .site-footer {
   min-height: 90px;
   padding: 20px max(5vw, calc((100vw - 1120px) / 2));
@@ -855,18 +978,22 @@ p {
   font-size: .8rem;
 }
 
+/* Tamaño y opacidad del logo del pie de página. */
 .site-footer img {
   height: 4rem;
   width: 4rem;
   opacity: .9;
 }
 
+/* Estilo de los enlaces del pie de página, si los hubiera. */
 .site-footer a {
   color: var(--green-900);
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Oculta visualmente un texto, manteniéndolo disponible para lectores de pantalla.
+   Se utiliza, por ejemplo, en etiquetas accesibles de campos de búsqueda. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -879,6 +1006,7 @@ p {
   border: 0;
 }
 
+/* Colores específicos para las notificaciones de Toastify según su tipo. */
 .toast-success {
   background: var(--green-900) !important;
 }
@@ -891,6 +1019,8 @@ p {
   background: #425d51 !important;
 }
 
+/* Adaptaciones para pantallas de hasta 950 px, como tablets.
+   La cuadrícula pasa a dos columnas y se reduce el logo del hero. */
 @media (max-width: 950px) {
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -908,7 +1038,9 @@ p {
   }
 }
 
+/* Adaptaciones para móviles de hasta 650 px de ancho. */
 @media (max-width: 650px) {
+  /* Coloca el logo y la navegación uno debajo del otro. */
   .site-header {
     padding: 12px 5%;
     align-items: center;
@@ -916,26 +1048,31 @@ p {
     gap: 12px;
   }
 
+  /* Ajusta el logo para que no supere el ancho de la pantalla. */
   .brand img {
     width: min(250px, 82vw);
   }
 
+  /* Permite que los enlaces de navegación pasen a otra línea. */
   .main-nav {
     width: 100%;
     flex-wrap: wrap;
     gap: 4px;
   }
 
+  /* Reduce el tamaño de los enlaces en pantallas pequeñas. */
   .nav-link,
   .nav-cart {
     padding: 8px 10px;
     font-size: .82rem;
   }
 
+  /* Aumenta ligeramente el porcentaje de ancho del contenido principal. */
   .page-shell {
     width: 92%;
   }
 
+  /* Reduce los espacios y el redondeo de la portada. */
   .hero {
     min-height: auto;
     margin: 22px 0 45px;
@@ -943,33 +1080,40 @@ p {
     border-radius: 20px;
   }
 
+  /* Ajusta el tamaño del título principal en móviles. */
   .hero h1 {
     font-size: clamp(2.2rem, 10vw, 3.1rem);
   }
 
+  /* Oculta la imagen decorativa del hero en esta resolución. */
   .hero-mark {
     display: none;
   }
 
+  /* Reduce la separación entre secciones. */
   .section-block {
     margin-bottom: 45px;
   }
 
+  /* Coloca el título y los elementos secundarios de la sección en columna. */
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
   }
 
+  /* Hace que el buscador ocupe todo el ancho disponible. */
   .section-heading .search-field {
     width: 100%;
   }
 
+  /* Muestra un solo producto por fila en el menú. */
   .product-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
+  /* Reduce el relleno interno de las tarjetas de producto. */
   .product-card {
     padding: 17px;
   }
@@ -978,44 +1122,53 @@ p {
     margin-bottom: 10px;
   }
 
+  /* Apila el panel de propina y el resumen de compra. */
   .checkout-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Organiza verticalmente los datos y controles de cada producto del carrito. */
   .cart-item {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
 
+  /* Permite que los controles de cantidad se ajusten a varias líneas. */
   .quantity-control {
     flex-wrap: wrap;
   }
 
+  /* Reduce el espacio interior del panel del pedido. */
   .order-section {
     padding: 20px 14px;
   }
 
+  /* Presenta los campos del formulario administrativo en una sola columna. */
   .product-form {
     grid-template-columns: 1fr;
   }
 
+  /* Reorganiza las filas administrativas para pantallas estrechas. */
   .admin-product-row {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
   }
 
+  /* Coloca los controles del stock en la primera columna. */
   .admin-stock {
     grid-column: 1;
     justify-items: start;
   }
 
+  /* Ubica el botón de acción en la segunda columna, ocupando dos filas. */
   .admin-product-row>.button-danger {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
   }
 
+  /* Permite que los elementos del pie de página pasen a otra línea. */
   .site-footer {
     padding: 22px 5%;
     flex-wrap: wrap;
@@ -1023,13 +1176,16 @@ p {
   }
 }
 
-/* Ajustes para el logo horizontal y las imágenes de productos */
+/* Ajustes adicionales para el logo horizontal y las imágenes de productos
+   en pantallas de hasta 760 px. */
 @media (max-width: 760px) {
+  /* Apila el contenido del hero y alinea sus elementos a la izquierda. */
   .hero {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  /* Vuelve a mostrar el logo del hero y lo centra debajo del texto. */
   .hero-mark {
     display: flex;
     width: min(100%, 340px);
@@ -1037,16 +1193,20 @@ p {
     align-self: center;
   }
 
+  /* Limita el ancho máximo de la imagen del hero. */
   .hero-mark img {
     max-width: 300px;
   }
 }
 
+/* Ajustes para teléfonos con pantallas de hasta 460 px de ancho. */
 @media (max-width: 460px) {
+  /* Reduce el ancho del logo horizontal. */
   .brand img {
     width: 205px;
   }
 
+  /* Reduce la altura de las imágenes de los productos. */
   .product-image {
     height: 135px;
   }

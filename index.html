@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es-AR">
 
@@ -5,27 +6,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Consultá el menú de El Oasis, armá tu pedido y confirmá tu compra.">
+  <!-- Título de la pestaña del navegador -->
   <title>El Oasis | Menú</title>
-  <link rel="icon" href="assets/img/logo-solo-oasis.jpg" type="image/svg+xml">
+
+  <!-- Icono de la pestaña y hoja de estilos principal -->
+  <link rel="icon" href="./assets/img/logo-solo-oasis.jpg" type="image/jpeg">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Biblioteca Toastify para mostrar notificaciones en pantalla -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Carga del módulo JavaScript principal de la aplicación -->
   <script type="module" defer src="js/main.js"></script>
 </head>
 
+<!-- data-page permite identificar que esta página corresponde al menú -->
 <body data-page="menu">
+
+  <!-- Encabezado con el logo y la navegación principal -->
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="El Oasis Restaurante, inicio">
       <img src="assets/img/logo-horizontal.png" alt="El Oasis Restaurante" width="250" height="82">
     </a>
+
     <nav class="main-nav" aria-label="Navegación principal">
       <a class="nav-link active" href="index.html" aria-current="page">Menú</a>
       <a class="nav-link" href="pages/administracion.html">Administración</a>
+
+      <!-- El contador se actualiza según los productos del carrito -->
       <a class="nav-cart" href="#pedido">Mi pedido <span id="contador-carrito">0</span></a>
     </nav>
   </header>
 
   <main class="page-shell">
+
+    <!-- Presentación principal del restaurante -->
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">SABORES PARA DISFRUTAR</p>
@@ -33,37 +49,56 @@
         <p>Elegí tus favoritos, armá tu pedido y nosotros nos ocupamos del resto.</p>
         <a class="button button-primary" href="#menu">Ver el menú</a>
       </div>
-      <div class="hero-mark"><img src="assets/img/logo-oasis-radius.png" alt="El Oasis Restaurante"></div>
+
+      <!-- Imagen destacada de la marca -->
+      <div class="hero-mark">
+        <img src="assets/img/logo-oasis-radius.png" alt="El Oasis Restaurante">
+      </div>
     </section>
 
+    <!-- Catálogo de productos y campo de búsqueda -->
     <section class="section-block" id="menu">
       <div class="section-heading">
         <div>
           <p class="eyebrow">NUESTRA CARTA</p>
           <h2>Menú del restaurante</h2>
         </div>
-        <label class="search-field"><span class="visually-hidden">Buscar producto</span><span
-            aria-hidden="true">⌕</span><input id="buscador" type="search" placeholder="Buscar en el menú…"
-            autocomplete="off"></label>
+
+        <!-- Permite buscar productos por medio del campo de texto -->
+        <label class="search-field">
+          <span class="visually-hidden">Buscar producto</span>
+          <span aria-hidden="true">⌕</span>
+          <input id="buscador" type="search" placeholder="Buscar en el menú…" autocomplete="off">
+        </label>
       </div>
+
+      <!-- Mensaje de estado y contenedor donde JavaScript muestra los productos -->
       <p id="estado-catalogo" class="status-message" role="status" aria-live="polite">Cargando menú…</p>
       <div id="contenedor-productos" class="product-grid" aria-live="polite"></div>
     </section>
 
+    <!-- Sección del pedido: productos seleccionados y opciones de compra -->
     <section class="section-block order-section" id="pedido">
       <div class="section-heading">
         <div>
           <p class="eyebrow">TU SELECCIÓN</p>
           <h2>Mi pedido</h2>
-        </div><span class="subtle-text">Revisá tu pedido antes de confirmar</span>
+        </div>
+        <span class="subtle-text">Revisá tu pedido antes de confirmar</span>
       </div>
+
+      <!-- JavaScript muestra aquí los productos agregados al carrito -->
       <div id="carrito" class="cart-list">
         <p class="empty-state">Todavía no agregaste productos.</p>
       </div>
+
       <div class="checkout-grid">
+
+        <!-- Opciones para seleccionar el porcentaje de propina -->
         <div class="tip-panel">
           <h3>¿Querés agregar propina?</h3>
           <p class="subtle-text">Es opcional y se calcula sobre el subtotal.</p>
+
           <div class="tip-options" role="radiogroup" aria-label="Porcentaje de propina">
             <label><input type="radio" name="propina" value="0" checked><span>Sin propina</span></label>
             <label><input type="radio" name="propina" value="10"><span>10%</span></label>
@@ -71,21 +106,33 @@
             <label><input type="radio" name="propina" value="20"><span>20%</span></label>
           </div>
         </div>
+
+        <!-- Resumen de importes y botones para confirmar o vaciar el pedido -->
         <div class="summary-panel">
           <p><span>Subtotal</span><strong id="subtotal">$0</strong></p>
           <p><span>Propina</span><strong id="monto-propina">$0</strong></p>
           <p class="summary-total"><span>Total</span><strong id="total">$0</strong></p>
-          <button id="confirmar-compra" class="button button-primary button-wide" type="button">Confirmar
-            compra</button>
-          <button id="vaciar-carrito" class="button button-quiet button-wide" type="button">Vaciar pedido</button>
+
+          <button id="confirmar-compra" class="button button-primary button-wide" type="button">
+            Confirmar compra
+          </button>
+          <button id="vaciar-carrito" class="button button-quiet button-wide" type="button">
+            Vaciar pedido
+          </button>
         </div>
       </div>
+
+      <!-- Ticket de compra generado dinámicamente después de confirmar el pedido -->
       <section id="ticket" class="receipt" aria-live="polite" aria-label="Ticket de compra" hidden></section>
     </section>
   </main>
 
-  <footer class="site-footer"><img src="assets/img/logo-oasis-radius.png" alt="" width="30" height="30"><span>El Oasis ·
-      restaurante</span><span>Av. Santa Fe 4602 · Ciudad Autónoma de Buenos Aires</span></footer>
+  <!-- Pie de página con la identidad y la dirección del restaurante -->
+  <footer class="site-footer">
+    <img src="assets/img/logo-oasis-radius.png" alt="" width="30" height="30">
+    <span>El Oasis · restaurante</span>
+    <span>Av. Santa Fe 4602 · Ciudad Autónoma de Buenos Aires</span>
+  </footer>
 </body>
 
 </html>
